@@ -31,6 +31,6 @@ jobs:
         with:
           project: "toonzk-freshdenokv-19"
           entrypoint: "main.ts"
-          root: "."
+          root: "ZKFreshDenoKV"
           
           
