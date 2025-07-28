@@ -23,6 +23,11 @@ export function Nav() {
               Future Plans
             </a>
           </li>
+          <li>
+            <a href="/tlozapi" class="text-white hover:text-green-200 transition-colors duration-200 font-medium">
+              Zelda API
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
