@@ -4,16 +4,19 @@
 
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
+import * as $api_persons from "./routes/api/persons.ts";
 import * as $api_tloz_detail_id_ from "./routes/api/tloz/detail/[id].tsx";
 import * as $api_tloz_list from "./routes/api/tloz/list.tsx";
 import * as $favourite from "./routes/favourite.tsx";
 import * as $future from "./routes/future.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $interests from "./routes/interests.tsx";
+import * as $person_api from "./routes/person-api.tsx";
 import * as $special from "./routes/special.tsx";
 import * as $tlozapi from "./routes/tlozapi.tsx";
 import * as $CharacterList from "./islands/CharacterList.tsx";
 import * as $Counter from "./islands/Counter.tsx";
+import * as $PersonManager from "./islands/PersonManager.tsx";
 import * as $SpecialCounter from "./islands/SpecialCounter.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
@@ -21,18 +24,21 @@ const manifest = {
   routes: {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
+    "./routes/api/persons.ts": $api_persons,
     "./routes/api/tloz/detail/[id].tsx": $api_tloz_detail_id_,
     "./routes/api/tloz/list.tsx": $api_tloz_list,
     "./routes/favourite.tsx": $favourite,
     "./routes/future.tsx": $future,
     "./routes/index.tsx": $index,
     "./routes/interests.tsx": $interests,
+    "./routes/person-api.tsx": $person_api,
     "./routes/special.tsx": $special,
     "./routes/tlozapi.tsx": $tlozapi,
   },
   islands: {
     "./islands/CharacterList.tsx": $CharacterList,
     "./islands/Counter.tsx": $Counter,
+    "./islands/PersonManager.tsx": $PersonManager,
     "./islands/SpecialCounter.tsx": $SpecialCounter,
   },
   baseUrl: import.meta.url,

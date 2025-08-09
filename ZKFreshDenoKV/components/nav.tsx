@@ -28,6 +28,11 @@ export function Nav() {
               Zelda API
             </a>
           </li>
+          <li>
+            <a href="/person-api" class="text-white hover:text-green-200 transition-colors duration-200 font-medium">
+              Person API
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
