@@ -1,9 +1,34 @@
 import { Head } from "$fresh/runtime.ts";
+import { Handlers, PageProps } from "$fresh/server.ts";
+import { getAuthState, requireAuth } from "../lib/middleware.ts";
 import { PersonManager } from "../islands/PersonManager.tsx";
 import { Nav } from "../components/nav.tsx";
 import { Footer } from "../components/footer.tsx";
 
-export default function PersonAPI() {
+export const handler: Handlers = {
+  async GET(req, ctx) {
+    const authState = await getAuthState(req);
+    const authResponse = requireAuth(authState);
+    if (authResponse) {
+      return authResponse;
+    }
+
+    return ctx.render({ authState });
+  },
+};
+
+interface PersonAPIPageProps {
+  authState: {
+    user: {
+      id: string;
+      username: string;
+      email: string;
+    } | null;
+  };
+}
+
+export default function PersonAPI(props: PageProps<PersonAPIPageProps>) {
+  const { authState } = props.data;
   return (
     <div class="min-h-screen flex flex-col bg-gradient-to-br from-green-50 to-emerald-100">
       <Head>

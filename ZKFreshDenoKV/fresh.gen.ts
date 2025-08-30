@@ -4,19 +4,30 @@
 
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
+import * as $api_auth_action_ from "./routes/api/auth/[action].ts";
+import * as $api_auth_logout from "./routes/api/auth/logout.ts";
+import * as $api_auth_status from "./routes/api/auth/status.ts";
+import * as $api_chat from "./routes/api/chat.ts";
 import * as $api_persons from "./routes/api/persons.ts";
 import * as $api_tloz_detail_id_ from "./routes/api/tloz/detail/[id].tsx";
 import * as $api_tloz_list from "./routes/api/tloz/list.tsx";
+import * as $chat from "./routes/chat.tsx";
 import * as $favourite from "./routes/favourite.tsx";
 import * as $future from "./routes/future.tsx";
 import * as $index from "./routes/index.tsx";
 import * as $interests from "./routes/interests.tsx";
+import * as $login from "./routes/login.tsx";
 import * as $person_api from "./routes/person-api.tsx";
+import * as $register from "./routes/register.tsx";
 import * as $special from "./routes/special.tsx";
 import * as $tlozapi from "./routes/tlozapi.tsx";
+import * as $AuthNavigation from "./islands/AuthNavigation.tsx";
 import * as $CharacterList from "./islands/CharacterList.tsx";
+import * as $ChatRoom from "./islands/ChatRoom.tsx";
 import * as $Counter from "./islands/Counter.tsx";
+import * as $LoginForm from "./islands/LoginForm.tsx";
 import * as $PersonManager from "./islands/PersonManager.tsx";
+import * as $RegisterForm from "./islands/RegisterForm.tsx";
 import * as $SpecialCounter from "./islands/SpecialCounter.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
@@ -24,21 +35,32 @@ const manifest = {
   routes: {
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
+    "./routes/api/auth/[action].ts": $api_auth_action_,
+    "./routes/api/auth/logout.ts": $api_auth_logout,
+    "./routes/api/auth/status.ts": $api_auth_status,
+    "./routes/api/chat.ts": $api_chat,
     "./routes/api/persons.ts": $api_persons,
     "./routes/api/tloz/detail/[id].tsx": $api_tloz_detail_id_,
     "./routes/api/tloz/list.tsx": $api_tloz_list,
+    "./routes/chat.tsx": $chat,
     "./routes/favourite.tsx": $favourite,
     "./routes/future.tsx": $future,
     "./routes/index.tsx": $index,
     "./routes/interests.tsx": $interests,
+    "./routes/login.tsx": $login,
     "./routes/person-api.tsx": $person_api,
+    "./routes/register.tsx": $register,
     "./routes/special.tsx": $special,
     "./routes/tlozapi.tsx": $tlozapi,
   },
   islands: {
+    "./islands/AuthNavigation.tsx": $AuthNavigation,
     "./islands/CharacterList.tsx": $CharacterList,
+    "./islands/ChatRoom.tsx": $ChatRoom,
     "./islands/Counter.tsx": $Counter,
+    "./islands/LoginForm.tsx": $LoginForm,
     "./islands/PersonManager.tsx": $PersonManager,
+    "./islands/RegisterForm.tsx": $RegisterForm,
     "./islands/SpecialCounter.tsx": $SpecialCounter,
   },
   baseUrl: import.meta.url,

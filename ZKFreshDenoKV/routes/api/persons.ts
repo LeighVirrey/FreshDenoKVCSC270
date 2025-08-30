@@ -1,5 +1,6 @@
 /// <reference lib="deno.unstable" />
 import { Handlers } from "$fresh/server.ts";
+import { getAuthState, requireAuth } from "../../lib/middleware.ts";
 
 export interface Person {
   id: string;
@@ -8,6 +9,7 @@ export interface Person {
   infected: boolean;
   createdAt: string;
   updatedAt: string;
+  createdBy?: string; // User ID who created this record
 }
 
 const kv = await Deno.openKv();
@@ -15,6 +17,13 @@ const kv = await Deno.openKv();
 export const handler: Handlers = {
   // GET /api/persons - Get all persons or a specific person by ID
   async GET(req) {
+    // Check authentication
+    const authState = await getAuthState(req);
+    const authResponse = requireAuth(authState, true);
+    if (authResponse) {
+      return authResponse;
+    }
+
     const url = new URL(req.url);
     const id = url.searchParams.get("id");
 
@@ -63,6 +72,13 @@ export const handler: Handlers = {
 
   // POST /api/persons - Create a new person
   async POST(req) {
+    // Check authentication
+    const authState = await getAuthState(req);
+    const authResponse = requireAuth(authState, true);
+    if (authResponse) {
+      return authResponse;
+    }
+
     try {
       const body = await req.json();
       
@@ -105,6 +121,7 @@ export const handler: Handlers = {
         infected: body.infected,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
+        createdBy: authState.user!.id, // Add user ID who created this record
       };
 
       // Store in Deno KV
@@ -132,6 +149,13 @@ export const handler: Handlers = {
 
   // PUT /api/persons - Update an existing person
   async PUT(req) {
+    // Check authentication
+    const authState = await getAuthState(req);
+    const authResponse = requireAuth(authState, true);
+    if (authResponse) {
+      return authResponse;
+    }
+
     try {
       const body = await req.json();
       
@@ -237,6 +261,13 @@ export const handler: Handlers = {
 
   // DELETE /api/persons - Delete a person by ID
   async DELETE(req) {
+    // Check authentication
+    const authState = await getAuthState(req);
+    const authResponse = requireAuth(authState, true);
+    if (authResponse) {
+      return authResponse;
+    }
+
     const url = new URL(req.url);
     const id = url.searchParams.get("id");
 

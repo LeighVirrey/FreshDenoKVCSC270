@@ -33,6 +33,11 @@ export function PersonManager() {
     setError(null);
     try {
       const response = await fetch("/api/persons");
+      if (response.status === 401) {
+        // Redirect to login if unauthorized
+        globalThis.location.href = "/login";
+        return;
+      }
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
