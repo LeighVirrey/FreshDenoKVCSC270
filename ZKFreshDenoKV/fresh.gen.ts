@@ -21,6 +21,7 @@ import * as $person_api from "./routes/person-api.tsx";
 import * as $register from "./routes/register.tsx";
 import * as $special from "./routes/special.tsx";
 import * as $tlozapi from "./routes/tlozapi.tsx";
+import * as $truth from "./routes/truth.tsx";
 import * as $AuthNavigation from "./islands/AuthNavigation.tsx";
 import * as $CharacterList from "./islands/CharacterList.tsx";
 import * as $ChatRoom from "./islands/ChatRoom.tsx";
@@ -52,6 +53,7 @@ const manifest = {
     "./routes/register.tsx": $register,
     "./routes/special.tsx": $special,
     "./routes/tlozapi.tsx": $tlozapi,
+    "./routes/truth.tsx": $truth,
   },
   islands: {
     "./islands/AuthNavigation.tsx": $AuthNavigation,
